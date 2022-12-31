@@ -7,6 +7,9 @@ build-job:
   stage: build
   image: node:alpine
   script:
+    - echo "Installing dependencies"
+    - npm install
+    - echo "Dependencies installed!"
     - echo "Compiling the code..."
     - npm run build
     - echo "Compile complete."
