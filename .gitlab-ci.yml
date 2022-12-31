@@ -8,7 +8,7 @@ build-job:
   image: node:alpine
   script:
     - echo "Compiling the code..."
-    - npm build
+    - npm run build
     - echo "Compile complete."
 
 unit-test-job:  
