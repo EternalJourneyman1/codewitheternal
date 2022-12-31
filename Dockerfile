@@ -8,3 +8,6 @@ COPY . .
 RUN npm ci
 # Build the app
 RUN npm run build
+
+FROM nginx:alpine
+COPY dist/ /usr/share/nginx/html
