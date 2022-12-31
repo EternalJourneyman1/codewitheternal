@@ -7,7 +7,7 @@ build-job:
   stage: build
   script:
     - echo "Compiling the code..."
-    - yarn build
+    - npm build
     - echo "Compile complete."
 
 unit-test-job:  
