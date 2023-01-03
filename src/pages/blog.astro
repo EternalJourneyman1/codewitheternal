@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+const posts = await Astro.glob('../pages/posts/*.md')
 ---
 
 <Layout title="CodeWithEternal Blog.">
@@ -25,6 +26,13 @@ import Card from '../components/Card.astro';
 		</ul>
 	</main>
 
+{posts?.map(post => (
+    <article>
+        <h2><a href={post.frontmatter.url}>{post.frontmatter.title}</a></h2>
+        <p>{post.frontmatter.description}</p>
+        <p>Published {post.frontmatter.publishDate}</p>
+    </article>
+))}
 
 </Layout>
 
@@ -70,4 +78,23 @@ import Card from '../components/Card.astro';
 		gap: 1rem;
 		padding: 0;
 	}
+
+	article {
+	    background-color: white;
+	    padding: 0.925rem;
+	    background-image: var(--accent-gradient);
+        background-size: 400%;
+        border-radius: 0.5rem;
+        background-position: 100%;
+        transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	}
+	article:is(:hover, :focus-within) {
+    	color: rgb(var(--accent));
+    }
+
+    article:is(:hover, :focus-within) {
+        background-position: 0;
+        opacity: 0.8;
+    }
 </style>
